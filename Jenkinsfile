@@ -1,3 +1,4 @@
+String cron_string = BRANCH_NAME == "master" ? "@hourly" : ""
 
 pipeline {
     agent {
@@ -7,7 +8,7 @@ pipeline {
         }
     }
     triggers {
-        cron('H */2 * * 1-5')
+        cron(cron_string)
     }
 
     environment {
