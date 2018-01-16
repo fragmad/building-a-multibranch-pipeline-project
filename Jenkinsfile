@@ -8,10 +8,6 @@ pipeline {
     }
 
 
-   triggers {
-     cron(H/5 * * * *)
-   }
-
     environment {
         CI = 'true'
     }
