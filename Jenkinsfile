@@ -7,6 +7,11 @@ pipeline {
         }
     }
 
+
+   triggers {
+     cron(H/5 * * * *)
+   }
+
     environment {
         CI = 'true'
     }
@@ -25,9 +30,6 @@ pipeline {
         stage('Deliver for development') {
             when {
                 branch 'development'
-            }
-            triggers {
-                cron(H/5 * * * *)
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
