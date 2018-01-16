@@ -1,4 +1,4 @@
-String cron_string = BRANCH_NAME == "master" ? "*/5 * * * *" : ""
+String master_branch_cron = BRANCH_NAME == "master" ? "*/30 * * * *" : ""
 
 pipeline {
     agent {
@@ -8,7 +8,7 @@ pipeline {
         }
     }
     triggers {
-        cron(cron_string)
+        cron(master_branch_cron)
     }
 
     environment {
