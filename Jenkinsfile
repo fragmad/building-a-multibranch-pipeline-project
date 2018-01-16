@@ -1,4 +1,4 @@
-String cron_string = BRANCH_NAME == "development" ? "@hourly" : ""
+String cron_string = BRANCH_NAME == "development" ? "* * * * *" : ""
 
 pipeline {
     agent {
