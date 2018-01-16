@@ -6,7 +6,9 @@ pipeline {
             args '-p 3000:3000 -p 5000:5000'
         }
     }
-
+    triggers {
+        cron('H */4 * * 1-5')
+    }
 
     environment {
         CI = 'true'
