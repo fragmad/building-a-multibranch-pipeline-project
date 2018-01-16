@@ -1,4 +1,4 @@
-# String cron_string = BRANCH_NAME == "development" ? "H/5 * * * *"
+String cron_string = BRANCH_NAME == "development" ? "H/5 * * * *"
 
 pipeline {
     agent {
@@ -6,14 +6,10 @@ pipeline {
             image 'node:6-alpine'
             args '-p 3000:3000 -p 5000:5000'
         }
+    triggers { cron(cron_string) }
     }
     environment {
         CI = 'true'
-    }
-    triggers {
-        when { branch "development" }
-        cron { "H/5 * * * *" }
-
     }
     stages {
         stage('Build') {
