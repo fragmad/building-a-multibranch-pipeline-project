@@ -1,3 +1,5 @@
+# String cron_string = BRANCH_NAME == "development" ? "H/5 * * * *"
+
 pipeline {
     agent {
         docker {
@@ -7,6 +9,11 @@ pipeline {
     }
     environment {
         CI = 'true'
+    }
+    triggers {
+        when { branch "development" }
+        cron { "H/5 * * * *" }
+
     }
     stages {
         stage('Build') {
